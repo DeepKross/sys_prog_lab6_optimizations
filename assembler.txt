@@ -1,0 +1,481 @@
+        TEXT    main.isPrime(SB), NOSPLIT|ABIInternal, $8-8
+        PUSHQ   BP
+        MOVQ    SP, BP
+        FUNCDATA        $0, gclocals·g2BeySu+wFnoycgXfElmcg==(SB)
+        FUNCDATA        $1, gclocals·g2BeySu+wFnoycgXfElmcg==(SB)
+        FUNCDATA        $5, main.isPrime.arginfo1(SB)
+        FUNCDATA        $6, main.isPrime.argliveinfo(SB)
+        PCDATA  $3, $1
+        CMPQ    AX, $1
+        JLE     main_isPrime_pc17
+        MOVL    $2, CX
+        JMP     main_isPrime_pc27
+main_isPrime_pc17:
+        XORL    AX, AX
+        POPQ    BP
+        RET
+main_isPrime_pc21:
+        INCQ    CX
+        MOVQ    BX, AX
+main_isPrime_pc27:
+        MOVQ    CX, DX
+        IMULQ   CX, CX
+        CMPQ    AX, CX
+        JLT     main_isPrime_pc65
+        TESTQ   DX, DX
+        JEQ     main_isPrime_pc72
+        MOVQ    DX, CX
+        MOVQ    AX, BX
+        CQO
+        IDIVQ   CX
+        TESTQ   DX, DX
+        JNE     main_isPrime_pc21
+        XORL    AX, AX
+        POPQ    BP
+        NOP
+        RET
+main_isPrime_pc65:
+        MOVL    $1, AX
+        POPQ    BP
+        RET
+main_isPrime_pc72:
+        PCDATA  $1, $0
+        CALL    runtime.panicdivide(SB)
+        XCHGL   AX, AX
+main_findPrimesSimple_pc0:
+        TEXT    main.findPrimesSimple(SB), ABIInternal, $80-8
+        CMPQ    SP, 16(R14)
+        PCDATA  $0, $-2
+        JLS     main_findPrimesSimple_pc209
+        PCDATA  $0, $-1
+        PUSHQ   BP
+        MOVQ    SP, BP
+        SUBQ    $72, SP
+        FUNCDATA        $0, gclocals·g2BeySu+wFnoycgXfElmcg==(SB)
+        FUNCDATA        $1, gclocals·g2BeySu+wFnoycgXfElmcg==(SB)
+        FUNCDATA        $5, main.findPrimesSimple.arginfo1(SB)
+        FUNCDATA        $6, main.findPrimesSimple.argliveinfo(SB)
+        PCDATA  $3, $1
+        MOVQ    AX, main.max+88(SP)
+        PCDATA  $3, $-1
+        MOVL    $2, CX
+        XORL    DX, DX
+        XORL    BX, BX
+        XORL    SI, SI
+        JMP     main_findPrimesSimple_pc39
+main_findPrimesSimple_pc36:
+        INCQ    CX
+main_findPrimesSimple_pc39:
+        CMPQ    AX, CX
+        JLT     main_findPrimesSimple_pc135
+        NOP
+        CMPQ    CX, $1
+        JLE     main_findPrimesSimple_pc36
+        MOVL    $2, DI
+        JMP     main_findPrimesSimple_pc162
+main_findPrimesSimple_pc57:
+        MOVQ    DI, AX
+        MOVQ    R9, DX
+        NOP
+        JMP     main_findPrimesSimple_pc36
+main_findPrimesSimple_pc66:
+        LEAQ    1(SI), R8
+        CMPQ    DX, R8
+        JCC     main_findPrimesSimple_pc125
+        MOVQ    CX, main.i+64(SP)
+        MOVQ    BX, AX
+        MOVQ    R8, BX
+        MOVQ    DX, CX
+        MOVL    $1, DI
+        LEAQ    type:int(SB), SI
+        PCDATA  $1, $0
+        CALL    runtime.growslice(SB)
+        MOVQ    BX, R8
+        MOVQ    AX, BX
+        MOVQ    CX, DX
+        MOVQ    main.max+88(SP), AX
+        MOVQ    main.i+64(SP), CX
+main_findPrimesSimple_pc125:
+        MOVQ    CX, -8(BX)(R8*8)
+        MOVQ    R8, SI
+        JMP     main_findPrimesSimple_pc36
+main_findPrimesSimple_pc135:
+        MOVQ    BX, AX
+        MOVQ    SI, BX
+        MOVQ    DX, CX
+        ADDQ    $72, SP
+        POPQ    BP
+        RET
+main_findPrimesSimple_pc150:
+        INCQ    R8
+        MOVQ    DI, AX
+        MOVQ    R9, DX
+        MOVQ    R8, DI
+main_findPrimesSimple_pc162:
+        MOVQ    DI, R8
+        IMULQ   DI, DI
+        CMPQ    CX, DI
+        JLT     main_findPrimesSimple_pc66
+        TESTQ   R8, R8
+        JEQ     main_findPrimesSimple_pc203
+        MOVQ    AX, DI
+        MOVQ    CX, AX
+        MOVQ    DX, R9
+        CQO
+        IDIVQ   R8
+        TESTQ   DX, DX
+        JNE     main_findPrimesSimple_pc150
+        JMP     main_findPrimesSimple_pc57
+main_findPrimesSimple_pc203:
+        CALL    runtime.panicdivide(SB)
+        XCHGL   AX, AX
+main_findPrimesSimple_pc209:
+        NOP
+        PCDATA  $1, $-1
+        PCDATA  $0, $-2
+        MOVQ    AX, 8(SP)
+        CALL    runtime.morestack_noctxt(SB)
+        MOVQ    8(SP), AX
+        PCDATA  $0, $-1
+        JMP     main_findPrimesSimple_pc0
+main_sieveOfEratosthenes_pc0:
+        TEXT    main.sieveOfEratosthenes(SB), ABIInternal, $96-8
+        CMPQ    SP, 16(R14)
+        PCDATA  $0, $-2
+        JLS     main_sieveOfEratosthenes_pc328
+        PCDATA  $0, $-1
+        PUSHQ   BP
+        MOVQ    SP, BP
+        SUBQ    $88, SP
+        FUNCDATA        $0, gclocals·J5F+7Qw7O7ve2QcWC7DpeQ==(SB)
+        FUNCDATA        $1, gclocals·CnDyI2HjYXFz19SsOj98tw==(SB)
+        FUNCDATA        $5, main.sieveOfEratosthenes.arginfo1(SB)
+        FUNCDATA        $6, main.sieveOfEratosthenes.argliveinfo(SB)
+        PCDATA  $3, $1
+        MOVQ    AX, main.n+104(SP)
+        PCDATA  $3, $-1
+        LEAQ    1(AX), CX
+        MOVQ    CX, main.prime.len+64(SP)
+        MOVQ    CX, BX
+        LEAQ    type:bool(SB), AX
+        PCDATA  $1, $0
+        CALL    runtime.makeslice(SB)
+        MOVQ    main.prime.len+64(SP), DX
+        XORL    CX, CX
+        JMP     main_sieveOfEratosthenes_pc64
+main_sieveOfEratosthenes_pc56:
+        MOVB    $1, (AX)(CX*1)
+        INCQ    CX
+        NOP
+main_sieveOfEratosthenes_pc64:
+        CMPQ    CX, DX
+        JLT     main_sieveOfEratosthenes_pc56
+        MOVQ    main.n+104(SP), R8
+        MOVL    $2, CX
+        JMP     main_sieveOfEratosthenes_pc85
+main_sieveOfEratosthenes_pc81:
+        LEAQ    1(R9), CX
+main_sieveOfEratosthenes_pc85:
+        MOVQ    CX, R9
+        IMULQ   CX, CX
+        NOP
+        CMPQ    R8, CX
+        JLT     main_sieveOfEratosthenes_pc126
+        CMPQ    R9, DX
+        JCC     main_sieveOfEratosthenes_pc316
+        MOVBLZX (R9)(AX*1), R10
+        TESTB   R10B, R10B
+        JNE     main_sieveOfEratosthenes_pc291
+        JMP     main_sieveOfEratosthenes_pc81
+main_sieveOfEratosthenes_pc126:
+        MOVQ    AX, main..autotmp_17+80(SP)
+        MOVL    $2, CX
+        XORL    BX, BX
+        XORL    SI, SI
+        XORL    DI, DI
+        JMP     main_sieveOfEratosthenes_pc150
+main_sieveOfEratosthenes_pc144:
+        INCQ    CX
+        MOVQ    R9, DI
+main_sieveOfEratosthenes_pc150:
+        CMPQ    R8, CX
+        JLT     main_sieveOfEratosthenes_pc258
+        NOP
+        CMPQ    CX, DX
+        JCC     main_sieveOfEratosthenes_pc273
+        MOVBLZX (CX)(AX*1), R9
+        TESTB   R9B, R9B
+        JEQ     main_sieveOfEratosthenes_pc251
+        LEAQ    1(DI), R9
+        CMPQ    BX, R9
+        JCC     main_sieveOfEratosthenes_pc244
+        MOVQ    CX, main.p+72(SP)
+        MOVQ    SI, AX
+        MOVQ    BX, CX
+        MOVL    $1, DI
+        LEAQ    type:int(SB), SI
+        MOVQ    R9, BX
+        PCDATA  $1, $1
+        CALL    runtime.growslice(SB)
+        MOVQ    main.prime.len+64(SP), DX
+        MOVQ    main.n+104(SP), R8
+        MOVQ    BX, R9
+        MOVQ    AX, SI
+        MOVQ    CX, BX
+        MOVQ    main..autotmp_17+80(SP), AX
+        MOVQ    main.p+72(SP), CX
+main_sieveOfEratosthenes_pc244:
+        MOVQ    CX, -8(SI)(R9*8)
+        JMP     main_sieveOfEratosthenes_pc144
+main_sieveOfEratosthenes_pc251:
+        MOVQ    DI, R9
+        NOP
+        JMP     main_sieveOfEratosthenes_pc144
+main_sieveOfEratosthenes_pc258:
+        MOVQ    SI, AX
+        MOVQ    BX, CX
+        MOVQ    DI, BX
+        ADDQ    $88, SP
+        POPQ    BP
+        RET
+main_sieveOfEratosthenes_pc273:
+        MOVQ    CX, AX
+        MOVQ    DX, CX
+        PCDATA  $1, $0
+        CALL    runtime.panicIndex(SB)
+main_sieveOfEratosthenes_pc284:
+        MOVB    $0, (AX)(CX*1)
+        ADDQ    R9, CX
+main_sieveOfEratosthenes_pc291:
+        CMPQ    R8, CX
+        JLT     main_sieveOfEratosthenes_pc81
+        CMPQ    CX, DX
+        JCS     main_sieveOfEratosthenes_pc284
+        MOVQ    CX, AX
+        MOVQ    DX, CX
+        CALL    runtime.panicIndex(SB)
+main_sieveOfEratosthenes_pc316:
+        MOVQ    R9, AX
+        MOVQ    DX, CX
+        CALL    runtime.panicIndex(SB)
+        XCHGL   AX, AX
+main_sieveOfEratosthenes_pc328:
+        NOP
+        PCDATA  $1, $-1
+        PCDATA  $0, $-2
+        MOVQ    AX, 8(SP)
+        CALL    runtime.morestack_noctxt(SB)
+        MOVQ    8(SP), AX
+        PCDATA  $0, $-1
+        JMP     main_sieveOfEratosthenes_pc0
+main_main_pc0:
+        TEXT    main.main(SB), ABIInternal, $168-0
+        LEAQ    -40(SP), R12
+        CMPQ    R12, 16(R14)
+        PCDATA  $0, $-2
+        JLS     main_main_pc500
+        PCDATA  $0, $-1
+        PUSHQ   BP
+        MOVQ    SP, BP
+        SUBQ    $160, SP
+        FUNCDATA        $0, gclocals·D1/YcbyNumM1nqYyoY4wEQ==(SB)
+        FUNCDATA        $1, gclocals·VqURZ1xwYBWEnxMATk1xmA==(SB)
+        FUNCDATA        $2, main.main.stkobj(SB)
+        PCDATA  $1, $0
+        CALL    time.Now(SB)
+        MOVQ    AX, main..autotmp_43+80(SP)
+        MOVQ    BX, main..autotmp_44+72(SP)
+        MOVQ    CX, main..autotmp_45+88(SP)
+main_main_pc46:
+        MOVL    $100000000, AX
+        PCDATA  $1, $1
+        CALL    main.sieveOfEratosthenes(SB)
+        MOVQ    main..autotmp_43+80(SP), AX
+        MOVQ    main..autotmp_44+72(SP), BX
+        MOVQ    main..autotmp_45+88(SP), CX
+        PCDATA  $1, $0
+        CALL    time.Since(SB)
+        MOVUPS  X15, main..autotmp_23+128(SP)
+        MOVUPS  X15, main..autotmp_23+144(SP)
+        LEAQ    type:string(SB), CX
+        MOVQ    CX, main..autotmp_23+128(SP)
+        LEAQ    main..stmp_0(SB), DX
+main_main_pc116:
+        MOVQ    DX, main..autotmp_23+136(SP)
+        PCDATA  $1, $2
+        NOP
+        CALL    runtime.convT64(SB)
+        LEAQ    type:time.Duration(SB), CX
+        MOVQ    CX, main..autotmp_23+144(SP)
+        MOVQ    AX, main..autotmp_23+152(SP)
+        MOVQ    os.Stdout(SB), BX
+        NOP
+        LEAQ    go:itab.*os.File,io.Writer(SB), AX
+        MOVL    $2, DI
+        MOVQ    DI, SI
+        LEAQ    main..autotmp_23+128(SP), CX
+        PCDATA  $1, $0
+        CALL    fmt.Fprintln(SB)
+        NOP
+        CALL    time.Now(SB)
+        MOVQ    AX, main..autotmp_43+80(SP)
+        MOVQ    BX, main..autotmp_44+72(SP)
+        MOVQ    CX, main..autotmp_45+88(SP)
+        NOP
+        MOVL    $2, DX
+        XORL    SI, SI
+        XORL    DI, DI
+        XORL    R8, R8
+        JMP     main_main_pc229
+main_main_pc226:
+        INCQ    DX
+main_main_pc229:
+        CMPQ    DX, $100000000
+        JGT     main_main_pc333
+        PCDATA  $1, $-1
+        NOP
+        MOVL    $2, R9
+        JMP     main_main_pc449
+main_main_pc249:
+        MOVQ    R9, AX
+        MOVQ    R11, DX
+        NOP
+        JMP     main_main_pc226
+main_main_pc258:
+        INCQ    R8
+        CMPQ    SI, R8
+        JCC     main_main_pc326
+        MOVQ    DX, main.i+64(SP)
+        MOVQ    DI, AX
+        MOVQ    R8, BX
+        MOVQ    SI, CX
+        MOVL    $1, DI
+        LEAQ    type:int(SB), SI
+        PCDATA  $1, $1
+        CALL    runtime.growslice(SB)
+        MOVQ    main.i+64(SP), DX
+        MOVQ    BX, R8
+        MOVQ    AX, DI
+        MOVQ    CX, SI
+        MOVQ    main..autotmp_43+80(SP), AX
+        MOVQ    main..autotmp_45+88(SP), CX
+        MOVQ    main..autotmp_44+72(SP), BX
+main_main_pc326:
+        MOVQ    DX, -8(DI)(R8*8)
+        JMP     main_main_pc226
+main_main_pc333:
+        PCDATA  $1, $0
+        CALL    time.Since(SB)
+        MOVUPS  X15, main..autotmp_26+96(SP)
+        MOVUPS  X15, main..autotmp_26+112(SP)
+        LEAQ    type:string(SB), DX
+        MOVQ    DX, main..autotmp_26+96(SP)
+        LEAQ    main..stmp_1(SB), DX
+        MOVQ    DX, main..autotmp_26+104(SP)
+        PCDATA  $1, $3
+        CALL    runtime.convT64(SB)
+        LEAQ    type:time.Duration(SB), DX
+        MOVQ    DX, main..autotmp_26+112(SP)
+        MOVQ    AX, main..autotmp_26+120(SP)
+        MOVQ    os.Stdout(SB), BX
+        NOP
+        LEAQ    go:itab.*os.File,io.Writer(SB), AX
+        LEAQ    main..autotmp_26+96(SP), CX
+        MOVL    $2, DI
+        MOVQ    DI, SI
+        PCDATA  $1, $0
+        CALL    fmt.Fprintln(SB)
+        ADDQ    $160, SP
+        POPQ    BP
+        RET
+main_main_pc437:
+        INCQ    R10
+        MOVQ    R9, AX
+        MOVQ    R11, DX
+        MOVQ    R10, R9
+main_main_pc449:
+        MOVQ    R9, R10
+        IMULQ   R9, R9
+        CMPQ    DX, R9
+        JLT     main_main_pc258
+        TESTQ   R10, R10
+        JEQ     main_main_pc494
+        MOVQ    AX, R9
+        MOVQ    DX, AX
+        MOVQ    DX, R11
+        CQO
+        IDIVQ   R10
+        TESTQ   DX, DX
+        JNE     main_main_pc437
+        JMP     main_main_pc249
+main_main_pc494:
+        CALL    runtime.panicdivide(SB)
+        XCHGL   AX, AX
+main_main_pc500:
+        NOP
+        PCDATA  $1, $-1
+        PCDATA  $0, $-2
+        CALL    runtime.morestack_noctxt(SB)
+        PCDATA  $0, $-1
+        JMP     main_main_pc0
+        TEXT    type:.eq.[2]interface {}(SB), DUPOK|ABIInternal, $40-16
+        CMPQ    SP, 16(R14)
+        PCDATA  $0, $-2
+        JLS     main_main_pc129
+        PCDATA  $0, $-1
+        PUSHQ   BP
+        MOVQ    SP, BP
+        SUBQ    $32, SP
+        FUNCDATA        $0, gclocals·TjPuuCwdlCpTaRQGRKTrYw==(SB)
+        FUNCDATA        $1, gclocals·J5F+7Qw7O7ve2QcWC7DpeQ==(SB)
+        FUNCDATA        $5, type:.eq.[2]interface {}.arginfo1(SB)
+        FUNCDATA        $6, type:.eq.[2]interface {}.argliveinfo(SB)
+        PCDATA  $3, $1
+        MOVQ    AX, main.p+48(SP)
+        MOVQ    BX, main.q+56(SP)
+        PCDATA  $3, $-1
+        XORL    CX, CX
+        JMP     main_main_pc46
+main_main_pc28:
+        MOVQ    main..autotmp_6+24(SP), CX
+        INCQ    CX
+        MOVQ    main.q+56(SP), BX
+        MOVQ    main.p+48(SP), AX
+        CMPQ    CX, $2
+        JGE     main_main_pc120
+        MOVQ    CX, DX
+        SHLQ    $4, CX
+        MOVQ    (AX)(CX*1), SI
+        MOVQ    (BX)(CX*1), DI
+        MOVQ    8(CX)(AX*1), R8
+        MOVQ    8(CX)(BX*1), CX
+        CMPQ    DI, SI
+        JNE     main_main_pc116
+        MOVQ    DX, main..autotmp_6+24(SP)
+        MOVQ    SI, AX
+        MOVQ    R8, BX
+        PCDATA  $1, $0
+        NOP
+        CALL    runtime.efaceeq(SB)
+        TESTB   AL, AL
+        JNE     main_main_pc28
+        MOVQ    main..autotmp_6+24(SP), CX
+        CMPQ    CX, $2
+        JMP     main_main_pc120
+        CMPQ    DX, $2
+main_main_pc120:
+        SETGE   AL
+        ADDQ    $32, SP
+        POPQ    BP
+        RET
+main_main_pc129:
+        NOP
+        PCDATA  $1, $-1
+        PCDATA  $0, $-2
+        MOVQ    AX, 8(SP)
+        MOVQ    BX, 16(SP)
+        CALL    runtime.morestack_noctxt(SB)
+        MOVQ    8(SP), AX
+        MOVQ    16(SP), BX
+        PCDATA  $0, $-1
+        JMP     main_main_pc0
